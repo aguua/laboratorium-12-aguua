@@ -1,12 +1,10 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.function.Executable;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,51 +13,25 @@ public class PageFactoryAddressesTest {
     private static WebDriver driver;
     private String testLogin = "aga.test.selenium@gmail.com";
     private String testPass = "selenium_passwd";
-/*
+    PageFactoryAddresses homePage;
+
     @BeforeAll
     public static void setUpBeforeClass() throws Exception {
         WebDriverManager.firefoxdriver().setup();
-        driver = new FirefoxDriver();
+        FirefoxOptions options = new FirefoxOptions();
+        options.setHeadless(true);
+        driver = new FirefoxDriver(options);
     }
 
-    @Test
-    public void testLogin() throws Exception {
-        PageFactoryAddresses homePage = new PageFactoryAddresses(driver);
+    @BeforeEach
+    public void setUpLogin(){
+        homePage = new PageFactoryAddresses(driver);
         homePage.loginAt(testLogin, testPass);
-        homePage.waitUntilPresent(By.className("navbar-text"));  // login zalogowanego użytkownika po prawej stronie
-        assertTrue(homePage.assertLogged());
-    }
-
-    @Test
-    public void testLoginFailNoEmail() throws Exception {
-        PageFactoryAddresses homePage = new PageFactoryAddresses(driver);
-        homePage.loginAt("", testPass);
-        assertTrue(homePage.assertLoggingError());
-    }
-    @Test
-    public void testLoginFailNoPassword() throws Exception {
-        PageFactoryAddresses homePage = new PageFactoryAddresses(driver);
-        homePage.loginAt(testLogin, "");
-        assertTrue(homePage.assertLoggingError());
-    }
-    @Test
-    public void testLoginFail() throws Exception {
-        PageFactoryAddresses homePage = new PageFactoryAddresses(driver);
-        homePage.loginAt("", "");
-        assertTrue(homePage.assertLoggingError());
-    }
-    @Test
-    public void testLoginFailWrongData() throws Exception {
-        PageFactoryAddresses homePage = new PageFactoryAddresses(driver);
-        homePage.loginAt(testLogin, "pass");
-        assertTrue(homePage.assertLoggingError());
     }
 
 
     @Test
     public void testAddSuccess() throws Exception {
-        PageFactoryAddresses homePage = new PageFactoryAddresses(driver);
-        homePage.loginAt(testLogin, testPass);
         homePage.enterAddress();
         homePage.addNewAddress_onlyRequired("Ala", "Nowak", "Mezotanska 11", "87-009", "Zgierz");
         homePage.waitUntilPresent(By.xpath("//div[@data-test='notice']"));
@@ -68,8 +40,6 @@ public class PageFactoryAddressesTest {
 
     @Test
     public void testAddTwiceSuccess() throws Exception {
-        PageFactoryAddresses homePage = new PageFactoryAddresses(driver);
-        homePage.loginAt(testLogin, testPass);
         homePage.enterAddress();
         int before = homePage.getSavedAddressesCount();
 
@@ -87,8 +57,6 @@ public class PageFactoryAddressesTest {
 
     @Test
     public void testTryAddWithoutName() throws Exception {
-        PageFactoryAddresses homePage = new PageFactoryAddresses(driver);
-        homePage.loginAt(testLogin, testPass);
         homePage.enterAddress();
         homePage.clickNewAddress();
         homePage.enterValueToField(1, "Mzór");
@@ -105,8 +73,6 @@ public class PageFactoryAddressesTest {
 
     @Test
     public void testTryAddFailForEmpty() throws Exception {
-        PageFactoryAddresses homePage = new PageFactoryAddresses(driver);
-        homePage.loginAt(testLogin, testPass);
         homePage.enterAddress();
         homePage.addNewAddress_onlyRequired("", "", "", "", "");
         homePage.waitUntilPresent(By.id("error_explanation"));
@@ -121,14 +87,20 @@ public class PageFactoryAddressesTest {
         );
     }
 
-
-
-
+    @AfterEach
+    public void tryLogout(){
+        if (homePage.isElementPresent(By.className("navbar-text"))) //kiedy użytkownik jest zalogowany
+        {
+            homePage.logOut();
+            homePage.waitUntilPresent(By.id("sign-in"));
+        }
+        homePage.backHome();
+    }
 
     @AfterAll
     public static void tearDownAfterClass() throws Exception {
         driver = null;
     }
-    */
+
 
 }

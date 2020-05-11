@@ -27,7 +27,8 @@ public class LoginOnPageTest {
         String githubLoginUrl = "https://github.com/login";
         LoginOnFactory gitHubLogin = new LoginOnFactory(driver, githubLoginUrl);
         gitHubLogin.logIn(testLogin, "selenium_passwd");
-        assertTrue(gitHubLogin.assertTitleContains("GitHub · Where software is built"));
+        gitHubLogin.waitUntilTitle("GitHub");
+        assertTrue(gitHubLogin.assertTitleContains("GitHub"));
     }
 
     //nie da sie przetestowac komunikatow o bledzie ze względu na różnice między stronami
@@ -36,7 +37,7 @@ public class LoginOnPageTest {
         String githubLoginUrl = "https://github.com/login";
         LoginOnFactory gitHubLogin = new LoginOnFactory(driver, githubLoginUrl);
         gitHubLogin.logIn(testLogin, "wrong");
-        assertFalse(gitHubLogin.assertTitleContains("GitHub · Where software is built"));
+        assertTrue(gitHubLogin.assertTitleContains("Sign in to GitHub · GitHub"));
     }
 
     @Test

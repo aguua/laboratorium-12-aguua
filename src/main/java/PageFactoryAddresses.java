@@ -26,6 +26,10 @@ public class PageFactoryAddresses {
     private WebElement submitButton;
     @FindBy(xpath = "//a[@href='/addresses']")
     private WebElement adressesMenu;
+    @FindBy(xpath = "//a[@data-test='sign-out']")
+    private WebElement signOutMenu;
+    @FindBy(xpath = "//a[@data-test='home']")
+    private WebElement homeMenu;
     @FindBy(xpath = "//a[@data-test='create']")
     private WebElement addNew;
     @FindBy(xpath = "//div[@data-test='notice']")
@@ -38,7 +42,6 @@ public class PageFactoryAddresses {
     List<WebElement> inputElements;
     //0 FirstName, 1 LasName, 2 Address1, 3 Address2, 4 City, 5 ZipCode, 6 Note
 
-
     public PageFactoryAddresses(WebDriver driver) {
         this.driver = driver;
         driver.get("http://a.testaddressbook.com/");
@@ -46,6 +49,16 @@ public class PageFactoryAddresses {
         PageFactory.initElements(driver, this);
     }
 
+    public void logOut(){
+        signOutMenu.click();
+    }
+    public void backHome(){
+        homeMenu.click();
+    }
+
+    public List<WebElement> getAddedAddresses() {
+        return addedAddresses;
+    }
 
     public void loginAt(String user, String password){
         waitUntilTitle("Address Book");
@@ -102,7 +115,7 @@ public class PageFactoryAddresses {
         wait.until(ExpectedConditions.titleContains(title));
     }
 
-    private boolean isElementPresent(By by) {
+    public boolean isElementPresent(By by) {
         try {
             driver.findElement(by);
             return true;
