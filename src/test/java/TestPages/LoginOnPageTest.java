@@ -37,8 +37,8 @@ public class LoginOnPageTest {
     }
 
 
-        // "https://www.x-kom.pl/logowanie";  //inny przycisk.. 
+        // "https://www.x-kom.pl/logowanie";  //inny przycisk..
 
-    }
+    
 
 }
