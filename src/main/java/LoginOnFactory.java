@@ -1,16 +1,16 @@
-//working on onet.pl oraz github.pl
-
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginOnFactory {
+
+    //working on onet.pl, github.pl
 
     public WebDriver driver;
     private final Wait<WebDriver> wait;
@@ -39,5 +39,15 @@ public class LoginOnFactory {
         System.out.println(driver.getTitle());
         return(result);
     }
+
+    public boolean isElementPresent(WebDriver d, By by) {
+        try {
+            d.findElement(by);
+            return true;
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            return false;
+        }
+    }
+
 
 }
