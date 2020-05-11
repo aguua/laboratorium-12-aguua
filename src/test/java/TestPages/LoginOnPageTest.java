@@ -2,6 +2,7 @@ package TestPages;
 
 import WebPages.LoginOnFactory;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
@@ -39,6 +40,10 @@ public class LoginOnPageTest {
 
         // "https://www.x-kom.pl/logowanie";  //inny przycisk..
 
-    
+
+    @AfterAll
+    public static void tearDownAfterClass() throws Exception {
+        driver.quit();
+    }
 
 }
