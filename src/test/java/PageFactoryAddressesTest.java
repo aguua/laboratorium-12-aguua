@@ -15,7 +15,7 @@ public class PageFactoryAddressesTest {
     private static WebDriver driver;
     private String testLogin = "aga.test.selenium@gmail.com";
     private String testPass = "selenium_passwd";
-
+/*
     @BeforeAll
     public static void setUpBeforeClass() throws Exception {
         WebDriverManager.firefoxdriver().setup();
@@ -129,4 +129,6 @@ public class PageFactoryAddressesTest {
     public static void tearDownAfterClass() throws Exception {
         driver = null;
     }
+    */
+
 }
