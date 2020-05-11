@@ -1,10 +1,8 @@
-package TestPages;
 
-import WebPages.LoginOnFactory;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.Ignore;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -31,7 +29,7 @@ public class LoginOnPageTest {
     }
 
     @Test
-    @Ignore
+    @Disabled
     public void testLoginOnet() throws Exception {
         String onetLoginUrl = "https://www.onet.pl/poczta";
         LoginOnFactory onetLogin = new LoginOnFactory(driver, onetLoginUrl);

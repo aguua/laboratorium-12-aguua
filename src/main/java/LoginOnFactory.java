@@ -1,6 +1,3 @@
-package WebPages;
-
-
 //working on onet.pl oraz github.pl
 
 
@@ -35,10 +32,6 @@ public class LoginOnFactory {
         inputEmail.sendKeys(user);
         inputPassword.sendKeys(passwd);
         submitButton.click();
-    }
-
-    private void waitUntilPresent(String element_name){
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.id(element_name)));
     }
 
     public boolean assertTitleContains(String title) throws Exception{

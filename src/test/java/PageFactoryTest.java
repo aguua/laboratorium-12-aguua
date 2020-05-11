@@ -1,19 +1,17 @@
-package TestPages;
 
-import WebPages.PageObjectDuckDuckGo;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.PageFactory;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class PageObjectTest {
+public class PageFactoryTest {
 
     private static WebDriver driver;
-    private PageObjectDuckDuckGo duckPage;
 
     @BeforeAll
     public static void setUpBeforeClass() throws Exception {
@@ -23,15 +21,16 @@ public class PageObjectTest {
 
     @Test
     public void testSearchDuck() throws Exception {
-        duckPage = new PageObjectDuckDuckGo(driver);
-        duckPage.search();
-        assertTrue(duckPage.assertTitleContains("wikipiedia at DuckDuckGo"));
+        PageFactoryDuckDuckGo duckPage = PageFactory.initElements(driver, PageFactoryDuckDuckGo.class);
+        duckPage.search("wikipedia");
+        assertTrue(duckPage.assertTitleContains("wikipedia at DuckDuckGo"));
     }
+
 
     @Test
     public void testSearchResult() throws Exception{
-        duckPage = new PageObjectDuckDuckGo(driver);
-        duckPage.firstSearchResult();
+        PageFactoryDuckDuckGo duckPage = PageFactory.initElements(driver, PageFactoryDuckDuckGo.class);
+        duckPage.firstSearchResult("wikipedia");
         assertTrue(duckPage.assertTitleContains("Wikipedia"));
     }
 
@@ -39,5 +38,4 @@ public class PageObjectTest {
     public static void tearDownAfterClass() throws Exception {
         driver.quit();
     }
-
 }
