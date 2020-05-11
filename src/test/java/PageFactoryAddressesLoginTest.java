@@ -21,7 +21,7 @@ public class PageFactoryAddressesLoginTest {
     public static void setUpBeforeClass() throws Exception {
         WebDriverManager.firefoxdriver().setup();
         FirefoxOptions options = new FirefoxOptions();
-        //options.setHeadless(true);
+        options.setHeadless(true);
         driver = new FirefoxDriver(options);
     }
     @BeforeEach
