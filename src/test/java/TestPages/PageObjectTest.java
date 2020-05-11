@@ -32,7 +32,7 @@ public class PageObjectTest {
     public void testSearchResult() throws Exception{
         duckPage = new PageObjectDuckDuckGo(driver);
         duckPage.firstSearchResult();
-        assertTrue(duckPage.assertTitleContains("Wikipedia, wolna encyklopedia"));
+        assertTrue(duckPage.assertTitleContains("Wikipedia"));
     }
 
     @AfterAll
