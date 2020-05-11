@@ -1,13 +1,10 @@
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -32,17 +29,12 @@ public class LoginOnPageTest {
     }
 
     @Test
-    @Disabled
     public void testLoginOnet() throws Exception {
         String onetLoginUrl = "https://www.onet.pl/poczta";
         LoginOnFactory onetLogin = new LoginOnFactory(driver, onetLoginUrl);
-        onetLogin.logIn(testLogin, "selenium1Passwd");  // zablokowane konto
-        assertTrue(onetLogin.assertTitleContains("Szukaj w Onet.pl"));
+        onetLogin.logIn(testLogin, "selenium1Passwd");  // zablokowane konto xD
+        assertTrue(onetLogin.assertTitleContains("Szukaj w Onet.pl")); //firefox driver przekierowuje od razu do wyszukiwania
     }
-
-
-        // "https://www.x-kom.pl/logowanie";  //inny przycisk..
-
 
     @AfterAll
     public static void tearDownAfterClass() throws Exception {
