@@ -19,7 +19,7 @@ public class SearchFactory {
     public SearchFactory(WebDriver driver, String url) {
         this.driver = driver;
         driver.get(url);
-        wait = new WebDriverWait(driver, 10);
+        wait = new WebDriverWait(driver, 20);
         PageFactory.initElements(driver, this);
     }
 
