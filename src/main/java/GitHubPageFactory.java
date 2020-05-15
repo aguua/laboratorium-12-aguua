@@ -34,7 +34,7 @@ public class GitHubPageFactory{
         this.driver = driver;
         driver.get("https://github.com");
         PageFactory.initElements(driver, this);
-        wait = new WebDriverWait(driver, 10);
+        wait = new WebDriverWait(driver, 15);
     }
 
 
