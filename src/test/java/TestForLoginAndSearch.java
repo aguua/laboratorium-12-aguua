@@ -25,9 +25,8 @@ public class TestForLoginAndSearch {
     }
 
     @BeforeEach
-    public void setUp()
-    {
-        gitHub = new GitHubPageFactory(driver).get();
+    public void setUp() {
+        gitHub = new GitHubPageFactory(driver);
     }
     @Test
     public void testEmptyLoginAndPassword() throws Exception {

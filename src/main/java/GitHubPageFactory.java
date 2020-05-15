@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class GitHubPageFactory extends LoadableComponent<GitHubPageFactory> {
+public class GitHubPageFactory{
     public WebDriver driver;
     private final Wait<WebDriver> wait;
 
@@ -36,15 +36,7 @@ public class GitHubPageFactory extends LoadableComponent<GitHubPageFactory> {
         PageFactory.initElements(driver, this);
         wait = new WebDriverWait(driver, 10);
     }
-    @Override
-    protected void load() {
-        driver.get("https://github.com");
-    }
-    @Override
-    protected void isLoaded() throws Error {
-        String url = driver.getCurrentUrl();
-        if(!url.contains("github"))  throw new Error("Page error!");
-    }
+
 
     // actions
     public void search(String ask){
